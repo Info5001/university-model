@@ -32,7 +32,7 @@ public class Department {
     EmployerDirectory employerdirectory;
     Degree degree;
 
-    HashMap<String, CourseSchedule> mastercoursecatalog; // very similar to ArrayList but with String used as indexes
+    HashMap<String, CourseSchedule> mastercoursecatalog;
 
     public Department(String n) {
         name = n;
@@ -62,6 +62,7 @@ public void addElectiveCourse(Course c){
     }
 
     public CourseSchedule newCourseSchedule(String semester) {
+
         CourseSchedule cs = new CourseSchedule(semester, coursecatalog);
         mastercoursecatalog.put(semester, cs);
         return cs;

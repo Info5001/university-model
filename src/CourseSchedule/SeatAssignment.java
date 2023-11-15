@@ -40,14 +40,13 @@ public class SeatAssignment {
         return seat.getCourseOffer();
     }
     public Course getAssociatedCourse(){
+        
         return getCourseOffer().getSubjectCourse();
     }
     public float GetCourseStudentScore(){
         return getCreditHours()*grade;
     }
     
-    public void printSeatInfo(){
-        System.out.println(getAssociatedCourse().getCOurseNumber() + " " + getAssociatedCourse().getCourseName()+ " | " + getCreditHours() + " credits | " + "Grade: " + grade);
-    }
+    
     
 }

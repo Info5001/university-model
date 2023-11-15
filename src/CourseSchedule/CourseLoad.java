@@ -29,6 +29,8 @@ public class CourseLoad {
     }
     
     public void registerStudent(SeatAssignment sa){
+        
+        
         sa.assignSeatToStudent(this);
         seatassignments.add(sa);
     }
@@ -43,13 +45,5 @@ public class CourseLoad {
         public ArrayList<SeatAssignment> getSeatAssignments(){
             return seatassignments;
         }
-     
-    public void print(){
-        System.out.println("Semester: "+semester);
-        for (SeatAssignment eachRegistredSeat: seatassignments){
-            System.out.print(seatassignments.indexOf(eachRegistredSeat)+1 + ". ");
-            eachRegistredSeat.printSeatInfo();
-        }
-    }
-
+            
 }

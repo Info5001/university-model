@@ -38,17 +38,17 @@ public class Department {
         name = departmentName;
         mastercoursecatalog = new HashMap<>();
         coursecatalog = new CourseCatalog(this);
-        studentdirectory = new StudentDirectory(this); //pass the department object so it stays linked to it
+        studentdirectory = new StudentDirectory(this); // pass the department object so it stays linked to it
         persondirectory = new PersonDirectory(this);
-        degree = new Degree(degreeName);     
+        degree = new Degree(degreeName);
     }
 
-    public void addCoreCourse(Course c){
-        degree.addCoreCourse(c);  
+    public void addCoreCourse(Course c) {
+        degree.addCoreCourse(c);
     }
 
-    public void addElectiveCourse(Course c){
-        degree.addElectiveCourse(c);    
+    public void addElectiveCourse(Course c) {
+        degree.addElectiveCourse(c);
     }
 
     public PersonDirectory getPersonDirectory() {
@@ -56,7 +56,7 @@ public class Department {
     }
 
     public StudentDirectory getStudentDirectory() {
-    return studentdirectory;
+        return studentdirectory;
     }
 
     public CourseSchedule newCourseSchedule(String semester) {
@@ -66,14 +66,11 @@ public class Department {
     }
 
     public CourseSchedule getCourseSchedule(String semester) {
-
         return mastercoursecatalog.get(semester);
-
     }
 
     public CourseCatalog getCourseCatalog() {
         return coursecatalog;
-
     }
 
     public Course newCourse(String n, String nm, int cr) {
@@ -82,24 +79,47 @@ public class Department {
     }
 
     public int calculateRevenuesBySemester(String semester) {
-
         CourseSchedule css = mastercoursecatalog.get(semester);
-
         return css.calculateTotalRevenues();
-
     }
 
-    public void RegisterForAClass(String studentid, String cn, String semester) {
-
+    public void registerForAClass(String studentid, String cn, String semester) {
         StudentProfile sp = studentdirectory.findStudent(studentid);
+        CourseLoad cl = sp.getCourseLoadBySemester(semester);
 
-        CourseLoad cl = sp.getCurrentCourseLoad();
+        if (cl == null) {
+            System.out.println("Student with id " + studentid + " has not registered for a class in " + semester
+                    + " semester yet.");
+            System.out.println("Adding new semester section in student transcript for semester " + semester + ".");
+            cl = sp.newCourseLoad(semester);
+        }
 
         CourseSchedule cs = mastercoursecatalog.get(semester);
-
         CourseOffer co = cs.getCourseOfferByNumber(cn);
 
+        if (co == null) {
+            System.out.println("Course number " + cn + " is not being taught this " + semester + " semester.");
+            return;
+        }
+
         co.assignEmptySeat(cl);
+    }
+
+    public void printDepartmentInfo(String semester) {
+        System.out.println("---------------------------------------------------------");
+        System.out.println("Department name: " + name);
+        System.out.println("---------------------------------------------------------");
+
+        CourseSchedule semesterSchedule = mastercoursecatalog.get(semester);
+        if (semesterSchedule == null) {
+            System.out.println("Schedule for semester :" + semester + " was not found.");
+            return;
+        }
+
+        semesterSchedule.printScheduledCourses();
+
+        studentdirectory.printStudentInformation();
 
     }
+
 }

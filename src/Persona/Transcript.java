@@ -24,13 +24,12 @@ public class Transcript {
     public Transcript(StudentProfile sp) {
         student = sp;
         courseloadlist = new HashMap();
-
     }
 
     public int getStudentSatisfactionIndex() {
-        //for each courseload 
-        //get seatassigmnets; 
-        //for each seatassignment add 1 if like =true;
+        // for each courseload
+        // get seatassigmnets;
+        // for each seatassignment add 1 if like =true;
         return 0;
     }
 
@@ -63,7 +62,8 @@ public class Transcript {
         }
         return sum;
     }
-    //sat index means student rated their courses with likes;
+
+    // sat index means student rated their courses with likes;
     public int getStudentSatifactionIndex() {
         ArrayList<SeatAssignment> courseregistrations = getCourseList();
         int sum = 0;
@@ -75,16 +75,16 @@ public class Transcript {
         }
         return sum;
     }
-    //generate a list of all courses taken so far (seetassignments) 
-    //from multiple semesters (course loads)
-    //from seat assignments we will be able to access the course offers
+    // generate a list of all courses taken so far (seetassignments)
+    // from multiple semesters (course loads)
+    // from seat assignments we will be able to access the course offers
 
     public ArrayList<SeatAssignment> getCourseList() {
         ArrayList temp2;
         temp2 = new ArrayList();
 
-        for (CourseLoad cl : courseloadlist.values()) { //extract cl list as objects --ignore label
-            temp2.addAll(cl.getSeatAssignments()); //merge one array list to another
+        for (CourseLoad cl : courseloadlist.values()) { // extract cl list as objects --ignore label
+            temp2.addAll(cl.getSeatAssignments()); // merge one array list to another
         }
 
         return temp2;

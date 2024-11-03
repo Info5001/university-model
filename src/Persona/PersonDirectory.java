@@ -14,30 +14,27 @@ import Department.Department;
  * @author kal bugrara
  */
 public class PersonDirectory {
-      Department department;
-      ArrayList<Person> personlist ;
-    
-    public PersonDirectory(Department d){
+    Department department;
+    ArrayList<Person> personlist;
+
+    public PersonDirectory(Department d) {
         department = d;
         personlist = new ArrayList();
     }
 
     public Person newPerson(String id) {
-
         Person p = new Person(id);
         personlist.add(p);
         return p;
     }
 
     public Person findPerson(String id) {
-
         for (Person p : personlist) {
-
             if (p.isMatch(id)) {
                 return p;
             }
         }
-            return null; //not found after going through the whole list
-         }
-    
+        return null; // not found after going through the whole list
+    }
+
 }

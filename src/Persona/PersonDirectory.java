@@ -7,18 +7,19 @@ package Persona;
 
 import java.util.ArrayList;
 
+import Department.Department;
+
 /**
  *
  * @author kal bugrara
  */
 public class PersonDirectory {
-    
+      Department department;
       ArrayList<Person> personlist ;
     
-      public PersonDirectory (){
-          
-       personlist = new ArrayList();
-
+    public PersonDirectory(Department d){
+        department = d;
+        personlist = new ArrayList();
     }
 
     public Person newPerson(String id) {

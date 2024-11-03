@@ -14,8 +14,10 @@ import java.util.ArrayList;
  */
 public class CourseCatalog {
     Department department;
+    
     String lastupdated;
     ArrayList<Course> courselist; 
+    
     public CourseCatalog(Department d){
         courselist = new ArrayList();
         department = d;

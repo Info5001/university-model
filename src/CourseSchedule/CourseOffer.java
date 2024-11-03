@@ -14,8 +14,10 @@ import java.util.ArrayList;
  *
  * @author kal bugrara
  */
-public class CourseOffer {
 
+ // Course offer is a Course taught in a 
+ // certain semester by a faculty and it has Seats
+public class CourseOffer {
     Course course;
     ArrayList<Seat> seatlist;
     FacultyAssignment facultyassignment;

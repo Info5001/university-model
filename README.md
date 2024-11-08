@@ -1,3 +1,3 @@
 ## University Example
 
-upd. Oct 16, 2023
+upd. Nov 8, 2024

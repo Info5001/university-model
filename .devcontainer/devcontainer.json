@@ -16,9 +16,6 @@
 		"vscode": {
 			"extensions": [
 				"vscjava.vscode-java-debug",
-				"GitHub.copilot",
-				"GitHub.copilot-chat",
-				"ms-vsliveshare.vsliveshare",
 				"vscjava.vscode-maven",
 				"vscjava.vscode-java-dependency",
 				"vscjava.vscode-java-test",
